@@ -13,77 +13,21 @@ class HomePageBody extends StatefulWidget {
 class _HomePageBodyState extends State<HomePageBody> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Expanded(
-              child: Column(
-            children: [
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Text(
-                  "hello world",
-                  style: TextStyle(fontSize: 50),
-                ),
-              )
-            ],
-          ))
-        ],
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Column(children: [
+          Slide(),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Lastest Product"),
+                IconButton(onPressed: () {}, icon: Icon(Icons.arrow_right))
+              ],
+            ),
+          )
+        ]),
       ),
     );
-    ;
   }
 }
