@@ -27,14 +27,6 @@ class _HomePageState extends State<HomePage> {
           "Home",
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.people,
-                color: Colors.pink,
-              ))
-        ],
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -59,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(color: Colors.pink))),
           ),
-          HomePageBody()
+          HomePageBody(),
         ]),
       ),
     ));
