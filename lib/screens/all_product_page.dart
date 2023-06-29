@@ -12,23 +12,23 @@ class AllProductPage extends StatefulWidget {
 
 class _AllProductPageState extends State<AllProductPage> {
   List<Product> allProducts = [];
-  Future<void> getAllProducts() async {
+  Future<List<Product>> getAllProducts() async {
     var response = await Dio().get("https://api.escuelajs.co/api/v1/products");
+    List<Product> products = [];
     if (response.statusCode == 200) {
-      List<Product> products = [];
+      print(response.data.length);
       for (var element in response.data) {
         products.add(Product.fromJson(element));
       }
-      setState(() {
-        allProducts = products;
-      });
+      return products;
+    } else {
+      throw ("failed to fetch product");
     }
   }
 
   @override
   void initState() {
     super.initState();
-    getAllProducts();
   }
 
   @override
@@ -49,22 +49,40 @@ class _AllProductPageState extends State<AllProductPage> {
       ),
       body: Container(
         margin: const EdgeInsets.only(top: 15),
-        child: GridView.builder(
-          itemCount: allProducts.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 0.9),
-          itemBuilder: (context, index) {
-            return HomeProduct(
-              id: allProducts[index].id,
-              images: allProducts[index].images,
-              title: allProducts[index].title,
-              price: allProducts[index].price,
-            );
-          },
-        ),
+        child: FutureBuilder<List<Product>>(
+            future: getAllProducts(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshot.hasError) {
+                return const Center(
+                  child: Text("Error occur"),
+                );
+              } else if (snapshot.data == null) {
+                return const Center(
+                  child: Text("No data"),
+                );
+              } else {
+                return GridView.builder(
+                  itemCount: snapshot.data?.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 0.9),
+                  itemBuilder: (context, index) {
+                    return HomeProduct(
+                      id: snapshot.data?[index].id,
+                      images: snapshot.data?[index].images,
+                      title: snapshot.data?[index].title,
+                      price: snapshot.data?[index].price,
+                    );
+                  },
+                );
+              }
+            }),
       ),
     ));
   }

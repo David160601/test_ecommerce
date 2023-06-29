@@ -24,6 +24,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         count++;
         products.add(Product.fromJson(json));
       }
+      print(count);
       setState(() {
         lastestProducts = products;
       });

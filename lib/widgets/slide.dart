@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 
 class Slide extends StatelessWidget {
-  
   const Slide({super.key});
 
   @override
@@ -26,8 +25,8 @@ class Slide extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: const Color.fromARGB(255, 223, 101, 142),
                   ),
-                  padding: EdgeInsets.all(8),
-                  child: Column(
+                  padding: const EdgeInsets.all(8),
+                  child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -45,10 +44,10 @@ class Slide extends StatelessWidget {
                         ))
                       ]),
                 )),
-                Flexible(
+                const Flexible(
                   flex: 2,
                   child: Center(
-                    child: const Image(
+                    child: Image(
                         fit: BoxFit.cover,
                         height: 100,
                         image: NetworkImage(

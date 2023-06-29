@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(color: Colors.pink))),
           ),
-          HomePageBody(),
+          const HomePageBody(),
         ]),
       ),
     ));

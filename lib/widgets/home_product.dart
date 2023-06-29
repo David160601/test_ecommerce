@@ -23,33 +23,41 @@ class _HomeProductState extends State<HomeProduct> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    widget.price.toString() ?? "",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  const Icon(
-                    Icons.star,
-                    color: Colors.pink,
-                  )
-                ],
-              ),
+              Flexible(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                          child: Text(
+                        widget.price.toString() ?? "",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      )),
+                      const Icon(
+                        Icons.star,
+                        color: Colors.pink,
+                      )
+                    ],
+                  )),
               const SizedBox(height: 10),
-              Center(
-                child: Image(
-                    alignment: Alignment.center,
-                    fit: BoxFit.contain,
-                    height: 120,
-                    image: NetworkImage(widget.images?.first ?? "")),
-              ),
+              Flexible(
+                  flex: 2,
+                  child: Center(
+                    child: Image(
+                        alignment: Alignment.center,
+                        fit: BoxFit.contain,
+                        height: 120,
+                        image: NetworkImage(widget.images?.first ?? "")),
+                  )),
               const SizedBox(height: 10),
-              Text(
-                widget.title ?? "",
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              )
+              Flexible(
+                  flex: 1,
+                  child: Text(
+                    widget.title ?? "",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 18),
+                  ))
             ]),
       ),
     );
