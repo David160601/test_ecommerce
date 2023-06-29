@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:card_swiper/card_swiper.dart';
 
 class Slide extends StatelessWidget {
+  
   const Slide({super.key});
 
   @override

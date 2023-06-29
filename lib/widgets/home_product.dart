@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class HomeProduct extends StatefulWidget {
-  const HomeProduct({super.key});
-
+  String? title;
+  int? id;
+  List<String>? images;
+  int? price;
+  HomeProduct({super.key, this.title, this.id, this.images, this.price});
   @override
   State<HomeProduct> createState() => _HomeProductState();
 }
@@ -13,7 +16,7 @@ class _HomeProductState extends State<HomeProduct> {
     return InkWell(
       onTap: (() {}),
       child: Ink(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(20)),
         child: Column(
@@ -24,28 +27,28 @@ class _HomeProductState extends State<HomeProduct> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "195",
+                    widget.price.toString() ?? "",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.star,
                     color: Colors.pink,
                   )
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Center(
                 child: Image(
                     alignment: Alignment.center,
                     fit: BoxFit.contain,
                     height: 120,
-                    image: NetworkImage(
-                        "https://www.freepnglogos.com/uploads/shoes-png/dance-shoes-png-transparent-dance-shoes-images-5.png")),
+                    image: NetworkImage(widget.images?.first ?? "")),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
-                "Title",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                widget.title ?? "",
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               )
             ]),
       ),

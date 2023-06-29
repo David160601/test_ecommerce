@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:test_ecommerce/widgets/home_page_body.dart';
 
 class HomePage extends StatefulWidget {
